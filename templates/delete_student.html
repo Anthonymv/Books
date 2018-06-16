@@ -1,0 +1,22 @@
+{% extends 'layouts/base.html' %}
+
+{% load staticfiles %}
+
+
+{% block stylesheet %} {% endblock %}
+
+{% block content %}
+    <h1 style="text-align: center; color: #bd2130;"></h1>
+    <img src="{% static 'Img/Delete_Icon.png' %}" alt="Delete" class="rounded mx-auto d-block" style="width: 15%;">
+
+    <form method="post">
+        {% csrf_token %}
+        <p class="text-danger">You are sure you want to eliminate the student {{ student.full_name }}</p>
+        <div class="col-sm-offset-2 col-sm-8">
+            <input class="btn btn-danger" type="submit" name="submit" value="Delete">
+            <a class="btn btn-info" href="{% url 'list_student' %}">No</a>
+        </div>
+    </form>
+{% endblock %}
+
+{% block javascripts %} {% endblock %}

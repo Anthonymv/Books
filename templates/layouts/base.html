@@ -1,0 +1,35 @@
+{% load  staticfiles %}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{% static 'libs/boostrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static "css/footer.css" %}">
+    {% block stylesheet %} {% endblock %}
+    <title>Index</title>
+</head>
+<body>
+
+{% block nav %}
+    {% include 'layouts/navbar.html' %}
+{% endblock %}
+
+<div class="container mb-3 mt-3 pb-4">
+    {% block content %}{% endblock %}
+</div>
+
+<footer class="footer mb-auto">
+    <div class="container">
+        <span class="text-muted">Place sticky footer content here.</span>
+    </div>
+</footer>
+
+<script src="{% static 'libs/boostrap/jquery-3.3.1.min.js' %}"></script>
+<script src="{% static 'libs/boostrap/popper.min.js' %}"></script>
+<script src="{% static 'libs/boostrap/js/bootstrap.min.js' %}"></script>
+{% block javascripts %}{% endblock %}
+</body>
+</html>

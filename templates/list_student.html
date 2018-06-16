@@ -1,0 +1,35 @@
+{% extends 'layouts/base.html' %}
+
+{% load staticfiles %}
+
+
+{% block stylesheet %} {% endblock %}
+
+{% block content %}
+    <h1 style="text-align: center; color: #bd2130;">Student List</h1>
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Last Name</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for stu in student %}
+            <tr>
+                <td>{{ stu.name }}</td>
+                <td>{{ stu.last_name }}</td>
+                <td><a class="btn btn-warning" style="color: white;" href="{% url 'edit_student' stu.id %}">Edit</a>
+                </td>
+                <td><a class="btn btn-danger" style="color: white;" href="{% url 'delete_student' stu.id %}">Delete</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <a class="btn btn-info" href="{% url 'create_student' %}">New Student</a>
+{% endblock %}
+
+{% block javascripts %} {% endblock %}
