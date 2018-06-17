@@ -1,9 +1,9 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 from django.urls import reverse
-from django.views.generic import CreateView, UpdateView, DeleteView
+from django.views.generic import CreateView, UpdateView, DeleteView, ListView
 
-from apps.models import Student
+from apps.models import Student, Books
 from apps.forms import StudentForm
 
 
@@ -51,3 +51,9 @@ class StudentDelete(DeleteView):
 
     def get_success_url(self):
         return reverse('list_student')
+
+
+class BookDjango(ListView):
+    template_name = 'books/book_django.html'
+    model = Books
+    pass

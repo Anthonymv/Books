@@ -6,7 +6,7 @@
 {% block stylesheet %} {% endblock %}
 
 {% block content %}
-    <h1>Agrega Estudiante</h1>
+    <h1>Add Students</h1>
 
     <form method="post" class="form-horizontal">
         {% csrf_token %}
@@ -39,7 +39,7 @@
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-8">
                 <input class="btn btn-success pull-right" type="submit" name="submit" value="Save">
-                <a class="btn btn-secondary" href="{% url 'list_student' %}">Atras</a>
+                <a class="btn btn-secondary" href="{% url 'list_student' %}">Back</a>
             </div>
 
         </div>

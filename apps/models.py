@@ -18,3 +18,11 @@ class Student(models.Model):
 
     def full_name(self):
         return u'{} {}'.format(self.name, self.last_name)
+
+
+class Books(models.Model):
+    title = models.CharField(max_length=150)
+    contenido = models.TextField()
+
+    def __str__(self):
+        return u'{}'.format(self.title)
