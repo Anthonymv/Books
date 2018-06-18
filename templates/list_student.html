@@ -12,6 +12,7 @@
         <tr>
             <th>Name</th>
             <th>Last Name</th>
+            <th>Profesion</th>
             <th>Edit</th>
             <th>Delete</th>
         </tr>
@@ -21,6 +22,11 @@
             <tr>
                 <td>{{ stu.name }}</td>
                 <td>{{ stu.last_name }}</td>
+                <td>
+                    {% for sb_s in stu.subject_student.all %}
+                        {{ sb_s.name }} q<br/>
+                    {% endfor %}
+                </td>
                 <td><a class="btn btn-warning" style="color: white;" href="{% url 'edit_student' stu.id %}">Edit</a>
                 </td>
                 <td><a class="btn btn-danger" style="color: white;" href="{% url 'delete_student' stu.id %}">Delete</a>

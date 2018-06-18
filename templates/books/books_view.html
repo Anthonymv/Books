@@ -1,0 +1,18 @@
+{% extends 'layouts/base.html' %}
+
+{% load staticfiles %}
+
+{% block stylesheet %} {% endblock %}
+
+{% block content %}
+    <h1>{{ books.title }}</h1>
+    <h2>{{ books.sub_title }}</h2>
+    <p>{{ books.description }}</p>
+    <p>{{ books.content }}</p>
+    <p><strong>{{ books.author }}</strong></p>
+    <p>{{ books.date_created }}</p>
+    <p>{{ books.user_created }}</p>
+    <a class="btn btn-secondary mr-auto" href="{% url 'book_list' %}">Back</a>
+{% endblock %}
+
+{% block javascripts %} {% endblock %}

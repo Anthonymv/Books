@@ -1,7 +1,7 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 from django.urls import reverse
-from django.views.generic import CreateView, UpdateView, DeleteView, ListView
+from django.views.generic import CreateView, UpdateView, DeleteView, ListView, DetailView
 
 from apps.models import Student, Books
 from apps.forms import StudentForm
@@ -53,7 +53,11 @@ class StudentDelete(DeleteView):
         return reverse('list_student')
 
 
-class BookDjango(ListView):
-    template_name = 'books/book_django.html'
+class BooksList(ListView):
     model = Books
-    pass
+    template_name = 'books/books.html'
+
+
+class BooksDetail(DetailView):
+    model = Books
+    template_name = 'books/books_view.html'
