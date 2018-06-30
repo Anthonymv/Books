@@ -1,10 +1,12 @@
+from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render
+from django.contrib.auth.forms import UserCreationForm
+from django.shortcuts import render, redirect
 from django.urls import reverse
-from django.views.generic import CreateView, UpdateView, DeleteView, ListView, DetailView
+from django.views.generic import CreateView, UpdateView, DeleteView, ListView, DetailView, FormView
 
-from apps.models import Student, Books
-from apps.forms import StudentForm
+from apps.models import Student, Books, Register
+from apps.forms import StudentForm, BooksForm, RegisterForm
 
 
 # Create your views here.
@@ -17,6 +19,12 @@ def index(request):
 def list_student(request):
     student = Student.objects.all()
     return render(request, template_name='list_student.html', context={'student': student})
+
+
+class RegisterUser(FormView):
+    model = Register
+    form_class = RegisterForm
+    template_name = 'user/login/register.html'
 
 
 class StudentCreate(CreateView):
@@ -61,3 +69,29 @@ class BooksList(ListView):
 class BooksDetail(DetailView):
     model = Books
     template_name = 'books/books_view.html'
+
+
+class BooksDelete(DeleteView):
+    model = Books
+    form_class = BooksForm
+    template_name = 'books/books_delete.html'
+
+    def get_context_data(self, **kwargs):
+        context_data = super(BooksDelete, self).get_context_data(**kwargs)
+        pk = self.kwargs.get('pk')
+        book = Student.objects.get(id=int(pk))
+        context_data.update({'book': book})
+        return context_data
+
+    def get_success_url(self):
+        return reverse('book_list')
+
+
+class BooksCreate(CreateView):
+    model = Books
+    form_class = BooksForm
+    template_name = 'books/books_add.html'
+
+    def get_success_url(self):
+        return reverse('book_list')
+

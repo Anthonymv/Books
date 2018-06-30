@@ -16,18 +16,39 @@
 {% endblock %}
 
 {% block content %}
-    <form class="form-signin w-25" method="post" style="margin: auto;">
-    {% csrf_token %}
+    <!-- At Work-->
+    <body style="background: black">
+    <h1 style="text-align: center; color: white;">At Work!</h1>
+    <div class="text-center mb-4">
+            <img class="mb-4" src="{% static 'img/panda.png' %}" alt="" width="272" height="272">
+        </div>
+    </body>
+    <!----------->
+
+
+ <!--   <form class="form-signin w-25" method="post" style="margin: auto;">
+    {#% csrf_token %#}
         <div class="text-center mb-4">
-            <img class="mb-4" src="{% static 'img/panda.png' %}" alt="" width="72" height="72">
+            <img class="mb-4" src="{#% static 'img/panda.png' %#}" alt="" width="72" height="72">
             <h1 class="h3 mb-3 font-weight-normal">Register</h1>
             <p></p>
         </div>
 
-          {{ form.as_p }}
+    {#% for field in form %#}
+      <p>
+        {#  #}{ field.label_tag }}<br>
+        {#  #}{ field }}
+        {#% if field.help_text %#}
+          <small style="color: grey">{#  #}{ field.help_text }}</small>
+        {#% endif %#}
+        {#% for error in field.errors %#}
+          <p style="color: red">{#  #}{ error }}</p>
+        {#% endfor %#}
+      </p>
+    {#% endfor %#}*/
 
         <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-    </form>
+    </form>-->
 {% endblock %}
 
 {% block footer %} {% endblock %}

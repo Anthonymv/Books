@@ -24,7 +24,7 @@
                 <td>{{ stu.last_name }}</td>
                 <td>
                     {% for sb_s in stu.subject_student.all %}
-                        {{ sb_s.name }} q<br/>
+                        {{ sb_s.name }} <br/>
                     {% endfor %}
                 </td>
                 <td><a class="btn btn-warning" style="color: white;" href="{% url 'edit_student' stu.id %}">Edit</a>

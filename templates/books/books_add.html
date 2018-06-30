@@ -1,10 +1,77 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends 'layouts/base.html' %}
+
+{% load staticfiles %}
+
+
+{% block stylesheet %} {% endblock %}
+
+{% block content %}
+    <form method="post" class="form-horizontal">
+        {% csrf_token %}
+        {% for hidden in form.hidden_fields %}
+            {{ hidden }}
+        {% endfor %}
+        <div class="form-group">
+            <label for="{{ form.title.id_for_label }}" class="col-sm-2 control-label">{{ form.title.label }}</label>
+            <div class="col-sm-8">
+                {{ form.title }}
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="{{ form.sub_title.id_for_label }}"
+                   class="col-sm-2 control-label">{{ form.sub_title.label }}</label>
+            <div class="col-sm-8">
+                {{ form.sub_title }}
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="{{ form.author.id_for_label }}" class="col-sm-2 control-label">{{ form.author.label }}</label>
+            <div class="col-sm-8">
+                {{ form.author }}
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="{{ form.description.id_for_label }}"
+                   class="col-sm-2 control-label">{{ form.description.label }}</label>
+            <div class="col-sm-8">
+                {{ form.description }}
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="{{ form.content.id_for_label }}" class="col-sm-2 control-label">{{ form.content.label }}</label>
+            <div class="col-sm-8">
+                {{ form.content }}
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="{{ form.date_created.id_for_label }}"
+                   class="col-sm-2 control-label">{{ form.date_created.label }}</label>
+            <div class="col-sm-8">
+                {{ form.date_created }}
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="{{ form.user_created.id_for_label }}"
+                   class="col-sm-2 control-label">{{ form.user_created.label }}</label>
+            <div class="col-sm-8">
+                {{ form.user_created }}
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-8">
+                <input class="btn btn-success pull-right" type="submit" name="submit" value="Save">
+                <a class="btn btn-secondary" href="{% url 'book_list' %}">Back</a>
+            </div>
+
+        </div>
+    </form>
+{% endblock %}
+
+{% block javascripts %} {% endblock %}

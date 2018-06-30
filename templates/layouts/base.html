@@ -21,11 +21,13 @@
     {% block content %}{% endblock %}
 </div>
 
+{% block footer %}
 <footer class="footer mb-auto">
     <div class="container">
         <span class="text-muted">Place sticky footer content here.</span>
     </div>
 </footer>
+{% endblock %}
 
 <script src="{% static 'libs/boostrap/jquery-3.3.1.min.js' %}"></script>
 <script src="{% static 'libs/boostrap/popper.min.js' %}"></script>

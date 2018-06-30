@@ -10,6 +10,7 @@
         <tr>
             <th>Book</th>
             <th>Author</th>
+            <th>Created</th>
             <th></th>
         </tr>
         </thead>
@@ -18,13 +19,16 @@
             <tr>
                 <td>{{ bk.title }}</td>
                 <td>{{ bk.author }}</td>
+                <td>{{ bk.date_created }}</td>
                 <td>
                     <a class="btn btn-warning" style="color: white;" href="{% url 'book_view' bk.id %}">View</a>
+                    <a class="btn btn-danger" style="color: white;" href="{% url 'book_delete' bk.id %}">Delete</a>
                 </td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
+    <a class="btn btn-info" href="{% url 'book_create' %}">Create Books</a>
 {% endblock %}
 
 {% block javascripts %} {% endblock %}
